@@ -28,6 +28,13 @@
           "notNull": true,
           "autoincrement": false
         },
+        "priority": {
+          "name": "priority",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
         "due_date": {
           "name": "due_date",
           "type": "text",

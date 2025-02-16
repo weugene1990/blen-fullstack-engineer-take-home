@@ -6,14 +6,8 @@ export const tasks = sqliteTable('tasks', {
   title: text('title').notNull(),
   description: text('description').notNull(),
   dueDate: text('due_date').notNull(),
+  priority: integer('priority').notNull().default(1),
   isCompleted: integer('is_completed', { mode: 'boolean' }).notNull().default(false),
-  createdAt: text('created_at')
-    .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: text('updated_at')
-    .notNull()
-    .$onUpdate(() => sql`CURRENT_TIMESTAMP`),
+  createdAt: text('created_at').notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text('updated_at').notNull().$onUpdate(() => sql`CURRENT_TIMESTAMP`),
 });
-
-export type Task = typeof tasks.$inferSelect;
-export type NewTask = typeof tasks.$inferInsert;
